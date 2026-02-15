@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RedwineSuperUser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Archivo+Black&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --patina: #639A8F;
+            --navy: #1B3A4B;
+            --hot-pink: #FF10F0;
+            --slate: #708090;
+            --border: 5px solid var(--black);
+        }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(180deg,
+                    var(--black) 0%,
+                    var(--black) 10%,
+                    #3f51b5 22%,
+                    #9c27b0 35%,
+                    #e91e63 50%,
+                    #ff5722 65%,
+                    #ff9800 75%,
+                    #ffc107 85%,
+                    #ffeb3b 92%,
+                    #fff9e6 100%);
+            background-size: 100% 300vh;
+            background-position: 0% -200vh;
+            z-index: -1;
+            animation: gradientFall 3s ease-in-out forwards, fadeToBlack 2s ease-out 3s forwards;
+        }
+
+        @keyframes gradientFall {
+            0% {
+                background-position: 0% -200vh;
+            }
+
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        @keyframes fadeToBlack {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            color: var(--white);
+            border-bottom: var(--border);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(48px, 8vw, 120px);
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .hero h1 .highlight {
+            background-color: var(--hot-pink);
+            color: var(--white);
+            padding: 0 15px;
+            display: inline-block;
+            transform: rotate(-2deg);
+            border: var(--border);
+            box-shadow: 8px 8px 0 var(--hot-pink);
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin-bottom: 40px;
+            font-weight: 400;
+            animation: slideIn 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Terminal Easter Egg */
+        .terminal {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border: var(--border);
+            margin-bottom: 30px;
+            max-width: 600px;
+            box-shadow: 8px 8px 0 var(--hot-pink);
+            animation: slideIn 0.8s ease-out 0.1s backwards;
+            border-radius: 0;
+        }
+
+        .terminal-header {
+            background-color: var(--patina);
+            padding: 10px 15px;
+            border-bottom: var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-button {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 2px solid var(--black);
+        }
+
+        .terminal-button.close {
+            background-color: #FF5F56;
+        }
+
+        .terminal-button.minimize {
+            background-color: #FFBD2E;
+        }
+
+        .terminal-button.maximize {
+            background-color: #27C93F;
+        }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            font-weight: 700;
+            color: var(--black);
+            font-size: 12px;
+        }
+
+        .terminal-body {
+            padding: 20px;
+        }
+
+        .terminal-line {
+            color: var(--patina);
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background-color: var(--patina);
+            animation: blink 1s step-end infinite;
+            margin-left: 2px;
+        }
+
+        .terminal-response {
+            color: var(--white);
+            opacity: 0;
+        }
+
+        .line-1 {
+            animation: fadeIn 0.5s ease-out 2s forwards;
+        }
+
+        .line-2 {
+            animation: fadeIn 0.5s ease-out 3.5s forwards;
+        }
+
+        .line-3 {
+            animation: fadeIn 0.5s ease-out 5s forwards;
+        }
+
+        .line-4 {
+            animation: fadeIn 0.5s ease-out 6.5s forwards;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--hot-pink);
+            color: var(--white);
+            padding: 18px 40px;
+            border: var(--border);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 18px;
+            box-shadow: 4px 4px 0 var(--hot-pink);
+            transition: all 0.2s;
+            animation: slideIn 0.8s ease-out 0.4s backwards;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🪄</text></svg>') 16 16, auto;
+        }
+
+        .cta-button:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--black);
+        }
+
+        .cta-button:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0 0 0 var(--black);
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="24" font-size="24">🐇</text></svg>') 16 16, auto;
+        }
+
+        /* Background shapes */
+        .shape {
+            position: absolute;
+            border: var(--border);
+            pointer-events: none;
+        }
+
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--hot-pink);
+            top: 10%;
+            right: 10%;
+            transform: rotate(15deg);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background-color: var(--patina);
+            bottom: 20%;
+            left: 5%;
+            transform: rotate(-10deg);
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .star {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--patina);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) {
+            top: 15%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .star:nth-child(2) {
+            top: 60%;
+            right: 25%;
+            animation-delay: 1s;
+        }
+
+        .star:nth-child(3) {
+            bottom: 25%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(15deg);
+            }
+
+            50% {
+                transform: translateY(-30px) rotate(15deg);
+            }
+        }
+
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: scale(0.8);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .shape-1,
+            .shape-2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>
+                    REDWINE<br>
+                    <span class="highlight">SUPER</span><br>
+                    USER
+                </h1>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-button close"></div>
+                        <div class="terminal-button minimize"></div>
+                        <div class="terminal-button maximize"></div>
+                        <div class="terminal-title">localhost</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span id="typing-text"></span><span class="terminal-cursor"></span>
+                        </div>
+                        <div class="terminal-response line-1">$ get-to-know-ya --execute</div>
+                        <div class="terminal-response line-2">> think_it_through: false</div>
+                        <div class="terminal-response line-3">> fell_for: thought_of_you</div>
+                        <div class="terminal-response line-4">> status: choked_up | face_down | burnt_out</div>
+                    </div>
+                </div>
+                <p>
+                    Creating bold digital experiences with confidence and style.
+                    Where design meets audacity and good taste meets innovation.
+                </p>
+                <a href="magic.html" class="cta-button">👋 Grab the wand and the rabbit 🚪</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Terminal typing animation
+        const text = "$ redwinesuperuser";
+        const typingElement = document.getElementById("typing-text");
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                typingElement.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeWriter, 500);
+    </script>
+
+</body>
+
+</html>
