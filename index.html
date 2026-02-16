@@ -380,9 +380,10 @@
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin: 40px 0;
+            margin: 40px auto;
+            max-width: 900px;
         }
 
         .project-card {
@@ -481,6 +482,11 @@
         /* Responsive */
         @media (max-width: 768px) {
 
+            .projects {
+                grid-template-columns: 1fr;
+                max-width: 100%;
+            }
+
             .shape-1,
             .shape-2 {
                 display: none;
@@ -539,12 +545,12 @@
 
             <div class="projects">
                 <div class="project-card">
-                    <h3>🎨 Project One</h3>
+                    <h3>💪 Grind Workout App</h3>
                     <p>
-                        A bold digital experience combining design and functionality. 
-                        Pushing boundaries with innovative solutions.
+                        A fitness tracking app for logging workouts, monitoring progress, and crushing your fitness goals.
+                        Train smarter with personalized routines.
                     </p>
-                    <button type="button" class="project-link" aria-label="View Project One">View Project →</button>
+                    <a href="https://grind-workout-app.netlify.app/" class="project-link" aria-label="Visit Grind Workout App project" target="_blank" rel="noopener noreferrer">View Project →</a>
                 </div>
                 
                 <div class="project-card">
