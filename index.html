@@ -355,6 +355,129 @@
             }
         }
 
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+            background: var(--black);
+            border-bottom: var(--border);
+        }
+
+        .projects-section h2 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            text-align: center;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .projects-section .subtitle {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 60px;
+            animation: slideIn 0.8s ease-out 0.2s backwards;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .project-card {
+            background-color: var(--navy);
+            border: var(--border);
+            padding: 30px;
+            box-shadow: 8px 8px 0 var(--hot-pink);
+            transition: all 0.3s ease;
+            text-align: left;
+            animation: slideIn 0.8s ease-out 0.3s backwards;
+        }
+
+        .project-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--hot-pink);
+        }
+
+        .project-card h3 {
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 24px;
+            color: var(--patina);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .project-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--hot-pink);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid var(--hot-pink);
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            color: var(--patina);
+            border-bottom-color: var(--patina);
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: var(--hot-pink);
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            animation: twinkle 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .sparkle:nth-child(5) {
+            top: 120%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(6) {
+            top: 140%;
+            right: 20%;
+            animation-delay: 1s;
+            background-color: var(--patina);
+        }
+
+        .sparkle:nth-child(7) {
+            top: 160%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(8) {
+            top: 180%;
+            right: 10%;
+            animation-delay: 1.5s;
+            background-color: var(--patina);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
 
@@ -397,9 +520,57 @@
                     Creating bold digital experiences with confidence and style.
                     Where design meets audacity and good taste meets innovation.
                 </p>
-                <a href="magic.html" class="cta-button">👋 Grab the wand and the rabbit 🚪</a>
+                <a href="#projects" class="cta-button">👋 Grab the wand and the rabbit 🚪</a>
             </div>
         </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>
+                BABY, WHY<br>
+                <span class="highlight">DON'T YOU</span><br>
+                COME OVER?
+            </h2>
+            <p class="subtitle">
+                ✨ Explore my creative projects and innovations! ✨
+            </p>
+
+            <div class="projects">
+                <div class="project-card">
+                    <h3>🎨 Project One</h3>
+                    <p>
+                        A bold digital experience combining design and functionality. 
+                        Pushing boundaries with innovative solutions.
+                    </p>
+                    <button type="button" class="project-link" aria-label="View Project One">View Project →</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>💻 Project Two</h3>
+                    <p>
+                        Code meets creativity in this full-stack application. 
+                        Built with modern technologies and best practices.
+                    </p>
+                    <button type="button" class="project-link" aria-label="View Project Two">View Project →</button>
+                </div>
+                
+                <div class="project-card">
+                    <h3>🚀 Project Three</h3>
+                    <p>
+                        An experiment in user experience and interaction design. 
+                        Crafted with attention to detail and style.
+                    </p>
+                    <button type="button" class="project-link" aria-label="View Project Three">View Project →</button>
+                </div>
+            </div>
+        </div>
+        <!-- Additional sparkles for projects section -->
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
     </section>
 
     <script>
