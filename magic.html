@@ -104,21 +104,62 @@
             animation: fadeIn 0.8s ease-out 0.6s backwards;
         }
 
-        .coming-soon {
-            background-color: var(--navy);
-            border: var(--border);
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 12px 12px 0 var(--hot-pink);
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
             animation: fadeIn 0.8s ease-out 0.3s backwards;
         }
 
-        .coming-soon h2 {
+        .project-card {
+            background-color: var(--navy);
+            border: var(--border);
+            padding: 30px;
+            box-shadow: 8px 8px 0 var(--hot-pink);
+            transition: all 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0 var(--hot-pink);
+        }
+
+        .project-card h3 {
             font-family: 'Archivo Black', sans-serif;
-            font-size: 32px;
+            font-size: 24px;
             color: var(--patina);
             margin-bottom: 15px;
             text-transform: uppercase;
+        }
+
+        .project-card p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .project-link {
+            display: inline-block;
+            color: var(--hot-pink);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid var(--hot-pink);
+            transition: all 0.2s;
+            background: none;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding: 0;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            color: var(--patina);
+            border-bottom-color: var(--patina);
         }
 
         .button-group {
@@ -212,19 +253,39 @@
             COME OVER?
         </h1>
         <p>
-            ✨ Connect with me and explore what's coming! ✨
+            ✨ Explore my creative projects and innovations! ✨
         </p>
 
-        <div class="coming-soon">
-            <h2>🛍️ Storefront Coming Soon</h2>
-            <p>
-                I'm building something special! My online storefront is currently under construction.
-                Check back soon to discover unique creations and exclusive offerings.
-            </p>
+        <div class="projects">
+            <div class="project-card">
+                <h3>🎨 Project One</h3>
+                <p>
+                    A bold digital experience combining design and functionality. 
+                    Pushing boundaries with innovative solutions.
+                </p>
+                <button type="button" class="project-link" aria-label="View Project One">View Project →</button>
+            </div>
+            
+            <div class="project-card">
+                <h3>💻 Project Two</h3>
+                <p>
+                    Code meets creativity in this full-stack application. 
+                    Built with modern technologies and best practices.
+                </p>
+                <button type="button" class="project-link" aria-label="View Project Two">View Project →</button>
+            </div>
+            
+            <div class="project-card">
+                <h3>🚀 Project Three</h3>
+                <p>
+                    An experiment in user experience and interaction design. 
+                    Crafted with attention to detail and style.
+                </p>
+                <button type="button" class="project-link" aria-label="View Project Three">View Project →</button>
+            </div>
         </div>
 
         <div class="button-group">
-            <a href="#" class="button button-primary">Visit Storefront (Coming Soon)</a>
             <a href="index.html" class="button button-secondary">Back Home</a>
         </div>
     </div>
