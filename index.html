@@ -78,9 +78,10 @@
         }
 
         .container {
-            max-width: 1200px;
+            width: 100%;
+            max-width: 1600px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 clamp(16px, 4vw, 80px);
         }
 
         /* Hero Section */
@@ -88,7 +89,7 @@
             min-height: 80vh;
             display: flex;
             align-items: center;
-            padding: 60px 0;
+            padding: clamp(40px, 6vw, 100px) 0;
             position: relative;
             overflow: hidden;
             background: transparent;
@@ -121,8 +122,8 @@
         }
 
         .hero p {
-            font-size: 20px;
-            max-width: 600px;
+            font-size: clamp(16px, 1.5vw, 22px);
+            max-width: 700px;
             margin-bottom: 40px;
             font-weight: 400;
             animation: slideIn 0.8s ease-out 0.2s backwards;
@@ -134,7 +135,7 @@
             backdrop-filter: blur(10px);
             border: var(--border);
             margin-bottom: 30px;
-            max-width: 600px;
+            max-width: clamp(320px, 50vw, 700px);
             box-shadow: 8px 8px 0 var(--hot-pink);
             animation: slideIn 0.8s ease-out 0.1s backwards;
             border-radius: 0;
@@ -357,7 +358,7 @@
 
         /* Projects Section */
         .projects-section {
-            padding: 80px 0;
+            padding: clamp(60px, 8vw, 120px) 0;
             background: var(--black);
             border-bottom: var(--border);
         }
@@ -373,17 +374,16 @@
 
         .projects-section .subtitle {
             text-align: center;
-            font-size: 20px;
+            font-size: clamp(16px, 1.5vw, 22px);
             margin-bottom: 60px;
             animation: slideIn 0.8s ease-out 0.2s backwards;
         }
 
         .projects {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin: 40px auto;
-            max-width: 900px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(20px, 3vw, 40px);
+            margin: 40px 0;
         }
 
         .project-card {
@@ -480,16 +480,42 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
+            .terminal-line,
+            .terminal-response {
+                font-size: 13px;
+            }
 
+            .cta-button {
+                font-size: 15px;
+                padding: 14px 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
             .projects {
                 grid-template-columns: 1fr;
-                max-width: 100%;
             }
 
             .shape-1,
             .shape-2 {
                 display: none;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .projects {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .hero {
+                min-height: 70vh;
+            }
+
+            .project-card {
+                padding: 40px;
             }
         }
     </style>
